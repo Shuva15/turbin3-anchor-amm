@@ -33,7 +33,7 @@ pub struct Initialize<'info> {
     #[account(
         init,
         payer = initializer,
-        associated_token::mint = token_mint_y,
+        associated_token::mint = token_mint_x,
         associated_token::authority = config,
     )]
     pub token_x_vault: Account<'info, TokenAccount>,

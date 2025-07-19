@@ -89,7 +89,7 @@ impl<'info> Withdraw<'info> {
         let cpi_accounts = Burn {
             mint: self.token_mint_lp.to_account_info(),
             from: self.user_lp.to_account_info(),
-            authority: self.config.to_account_info()
+            authority: self.user.to_account_info()
         };
 
         let seeds = &[

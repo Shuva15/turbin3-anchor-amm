@@ -19,8 +19,8 @@ pub mod turbin3_anchor_amm {
         ctx.accounts.init(seed, fee, authority, &ctx.bumps)
     }
 
-    pub fn deposit(ctx: Context<Deposit>, depsit_amount: u64, max_x: u64, max_y: u64) -> Result<()> {
-        ctx.accounts.deposit(depsit_amount, max_x, max_y)
+    pub fn deposit(ctx: Context<Deposit>, asking_lp_amount: u64, max_x: u64, max_y: u64) -> Result<()> {
+        ctx.accounts.deposit(asking_lp_amount, max_x, max_y)
     }
 
     pub fn swap(ctx: Context<Swap>, is_deposit_token_x: bool, deposit_amount: u64) -> Result<()> {
