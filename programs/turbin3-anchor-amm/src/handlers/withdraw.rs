@@ -40,22 +40,23 @@ pub struct Withdraw<'info> {
     pub token_y_vault: Account<'info, TokenAccount>,
 
     #[account(
-        mut,
+        init_if_needed,
+        payer = user,
         associated_token::mint = token_mint_x,
         associated_token::authority = user
     )]
     pub user_token_x: Account<'info, TokenAccount>,
 
     #[account(
-        mut,
+        init_if_needed,
+        payer = user,
         associated_token::mint = token_mint_y,
         associated_token::authority = user
     )]
     pub user_token_y: Account<'info, TokenAccount>,
 
     #[account(
-        init_if_needed,
-        payer = user,
+        mut,
         associated_token::mint = token_mint_lp,
         associated_token::authority = user,
     )]

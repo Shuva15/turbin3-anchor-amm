@@ -154,7 +154,7 @@ describe("turbin3-anchor-amm", () => {
   });
   
   it("swap token_x for token_y", async () => {
-    const tx = await program.methods.swap(true, new anchor.BN(2345)).accountsPartial({
+    const tx = await program.methods.swap(true, new anchor.BN(500000)).accountsPartial({
       trader: user.publicKey,
       tokenMintX,
       tokenMintY,
@@ -170,15 +170,15 @@ describe("turbin3-anchor-amm", () => {
     //await provider.connection.confirmTransaction(tx);
     console.log("Your transaction signature", tx);
     console.log(
-      "token_x_vault balance should be ---->",
+      "token_x_vault balance ---->",
       await provider.connection.getTokenAccountBalance(tokenXVault)
     );
     console.log(
-      "token_Y_vault balance should be ---->",
+      "token_Y_vault balance ---->",
       await provider.connection.getTokenAccountBalance(tokenYVault)
     );
     console.log(
-      "user_token_x balance should be ----->",
+      "user_token_x balance ----->",
       await provider.connection.getTokenAccountBalance(userTokenX)
     );
   })
@@ -202,15 +202,15 @@ describe("turbin3-anchor-amm", () => {
     //await provider.connection.confirmTransaction(tx);
     console.log("Your transaction signature", tx);
     console.log(
-      "token_x_vault balance should be ---->",
+      "token_x_vault balance ---->",
       await provider.connection.getTokenAccountBalance(tokenXVault)
     );
     console.log(
-      "token_Y_vault balance should be ---->",
+      "token_Y_vault balance ---->",
       await provider.connection.getTokenAccountBalance(tokenYVault)
     );
     console.log(
-      "user_token_x balance should be ----->",
+      "user_token_x balance ----->",
       await provider.connection.getTokenAccountBalance(userTokenX)
     );
   })
