@@ -68,10 +68,11 @@ pub struct Withdraw<'info> {
 }
 
 impl<'info> Withdraw<'info> {
-    pub fn withdraw(&self, lp_token_amount: u64) -> Result<()> {
+    pub fn withdraw(&self, lp_token_amount: u64, min_x: u64, min_y: u64) -> Result<()> {
 
         require!(self.config.locked == false, AmmError::PoolLocked);
         require!(lp_token_amount > 0, AmmError::InvalidAmount);
+        require!(min_x > 0 && min_y > 0, AmmError::InvalidAmount);
 
         let xy_amounts = ConstantProduct::xy_withdraw_amounts_from_l(
             self.token_x_vault.amount, 
@@ -80,6 +81,8 @@ impl<'info> Withdraw<'info> {
             lp_token_amount, 
             6
         ).unwrap();
+
+        require!(xy_amounts.x >= min_x && xy_amounts.y >= min_y, AmmError::SlippageExceeded);
 
         self.burn_lp_token(lp_token_amount)?;
         self.withdraw_token(true, xy_amounts.x)?;

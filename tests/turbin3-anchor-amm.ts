@@ -184,7 +184,10 @@ describe("turbin3-anchor-amm", () => {
   })
 
   it("withdraw mint_token from lp_token and burn lp_token", async () => {
-    const tx = await program.methods.withdraw(new anchor.BN(2000000),).accountsPartial({
+    const tx = await program.methods.withdraw(
+      new anchor.BN(2000000),
+      new anchor.BN(500000),
+      new anchor.BN(500000)).accountsPartial({
       user: user.publicKey,
       tokenMintX,
       tokenMintY,

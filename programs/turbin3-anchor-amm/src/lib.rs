@@ -27,7 +27,7 @@ pub mod turbin3_anchor_amm {
         ctx.accounts.swap(is_deposit_token_x, deposit_amount)
     }
 
-    pub fn withdraw(ctx: Context<Withdraw>, lp_token_amount: u64) -> Result<()> {
-        ctx.accounts.withdraw(lp_token_amount)
+    pub fn withdraw(ctx: Context<Withdraw>, lp_token_amount: u64, min_x: u64, min_y: u64) -> Result<()> {
+        ctx.accounts.withdraw(lp_token_amount, min_x, min_y)
     }
 }
