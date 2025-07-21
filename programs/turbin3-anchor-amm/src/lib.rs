@@ -30,4 +30,12 @@ pub mod turbin3_anchor_amm {
     pub fn withdraw(ctx: Context<Withdraw>, lp_token_amount: u64, min_x: u64, min_y: u64) -> Result<()> {
         ctx.accounts.withdraw(lp_token_amount, min_x, min_y)
     }
+
+    pub fn update_locked(ctx: Context<Update>, want_to_lock: bool) -> Result<()> {
+        if want_to_lock {
+            ctx.accounts.lock()
+        } else {
+            ctx.accounts.unlock()
+        }
+    }
 }
